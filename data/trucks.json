@@ -1,0 +1,26 @@
+[{
+        "truckId": 1,
+        "companyName": "Volvo",
+        "loaded": true,
+        "weight": 0,
+        "loadedParcels": []
+    },
+    {
+        "truckId": 2,
+        "companyName": "ABC",
+        "loaded": true,
+        "weight": 5,
+        "loadedParcels": [{
+            "parcelId": 1
+        }]
+    },
+    {
+        "truckId": 3,
+        "companyName": "XYZ",
+        "loaded": true,
+        "weight": 4,
+        "loadedParcels": [{
+            "parcelId": 2
+        }]
+    }
+]
