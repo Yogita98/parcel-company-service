@@ -9,18 +9,33 @@
         "truckId": 2,
         "companyName": "ABC",
         "loaded": true,
-        "weight": 5,
-        "loadedParcels": [{
-            "parcelId": 1
-        }]
+        "weight": 0,
+        "loadedParcels": []
     },
     {
         "truckId": 3,
         "companyName": "XYZ",
         "loaded": true,
-        "weight": 4,
+        "weight": 16,
         "loadedParcels": [{
-            "parcelId": 2
-        }]
+                "parcelId": 3
+            },
+            {
+                "parcelId": 4
+            }
+        ]
+    },
+    {
+        "truckId": 4,
+        "companyName": "PQR",
+        "loaded": true,
+        "weight": 18,
+        "loadedParcels": [{
+                "parcelId": 9
+            },
+            {
+                "parcelId": 10
+            }
+        ]
     }
 ]

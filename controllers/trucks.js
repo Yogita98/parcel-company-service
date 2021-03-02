@@ -1,20 +1,13 @@
-// import { v4 as uuid } from 'uuid';
-const { v4: uuid } = require('uuid');
 const fs = require('fs');
-const parcelData = require('../data/parcels.json');
-const truckData = require('../data/trucks.json')
-
+var parcelData = require('../data/parcels.json');
+var truckData = require('../data/trucks.json')
 
 const getTrucks = (req, res, next) => {
-    console.log('Trucks available in the inventory')
-
-    res.status(200).json(trucks)
+    res.status(200).json(truckData)
 }
 
 const createTruck = (req, res, next) => {
-    console.log('New truck added to the inventory')
-    const newTruckId = truckData.Trucks[truckData.Trucks.length - 1].truckId
-    console.log(newTruckId)
+    const newTruckId = truckData[truckData.length - 1].truckId + 1
     const newTruck = {
         "truckId": newTruckId,
         "companyName": req.body.company,
@@ -22,25 +15,25 @@ const createTruck = (req, res, next) => {
         "weight": 0,
         "loadedParcels": []
     };
-    truckData.Trucks.push(newTruck)
+    truckData.push(newTruck)
     fs.writeFile('data/trucks.json', JSON.stringify(truckData), 'utf8', err => {
-
-        // Checking for errors 
         if (err) throw err;
-
         console.log("Added a new truck to the inventory")
     });
-    // trucks.push({ truckId: uuid(), ...newTruck })
-    // res.status(201).json({
-    //     message: 'New truck added to the inventory',
-    //     trucks: trucks
-    // })
-    res.status(201).json(newTruck)
     console.log(newTruck)
+    res.status(201).json(newTruck)
 }
 
 const getTruckDetails = (req, res, next) => {
-    const truckDetails = trucks.filter(truck => truck.truckId == req.params.truckId)
+    let id = req.params.truckId
+    if (!id || id != parseInt(id, 10)) return res.status(400).json({
+        message: 'The server could not understand the request. Please check your query again.'
+    })
+    const truckDetails = truckData.filter(truck => truck.truckId == req.params.truckId)
+    if (!truckDetails.length) return res.status(404).json({
+        message: 'The truck with the provided ID does not exist'
+    })
+    console.log(truckDetails)
     res.status(200).json({
         message: 'Truck details',
         truckDetails: truckDetails
@@ -48,11 +41,15 @@ const getTruckDetails = (req, res, next) => {
 }
 
 const loadTruck = (req, res, next) => {
-    // console.log("load")
-
     let count = req.query.parcelCount
-    const truck = truckData.Trucks.find(t => {
+    if (!count || count != parseInt(count, 10)) return res.status(400).json({
+        message: 'The server could not understand the request. Please check your query again.'
+    })
+    const truck = truckData.find(t => {
         return t.loaded === false
+    })
+    if (!truck) return res.status(202).json({
+        message: 'All the trucks are currently assigned. Please try again later '
     })
     let truckWeight = 0
     while (count > 0) {
@@ -67,45 +64,60 @@ const loadTruck = (req, res, next) => {
     }
     truck.weight = truckWeight
     truck.loaded = true
-    console.log(truckData)
     fs.writeFile('data/trucks.json', JSON.stringify(truckData), 'utf8', err => {
-
-        // Checking for errors 
         if (err) throw err;
-
         console.log("Done loading the truck")
     });
     fs.writeFile('data/parcels.json', JSON.stringify(parcelData), 'utf8', err => {
-
-        // Checking for errors 
         if (err) throw err;
-
         console.log("Done loading the parcels")
     });
-    res.status(200).json(parcelData.Parcels)
+    return res.status(200).json({
+        message: 'Truck successfully loaded',
+        truckDetails: truck
+    })
 }
 
 const getTruckWeight = (req, res, next) => {
-    const truck = truckData.Trucks.filter(t => t.truckId == req.params.truckId)
+    let id = req.params.truckId
+    if (!id || id != parseInt(id, 10)) return res.status(400).json({
+        message: 'The server could not understand the request. Please check your query again.'
+    })
+    const truck = truckData.filter(t => t.truckId == id)
+    if (!truck.length) return res.status(404).json({
+        message: 'The truck with the provided ID does not exist'
+    })
     res.status(200).json({
         weight: truck[0].weight
     })
 }
 
 const getParcelCount = (req, res, next) => {
-    const truck = truckData.Trucks.filter(t => t.truckId == req.params.truckId)
+    let id = req.params.truckId
+    if (!id || id != parseInt(id, 10)) return res.status(400).json({
+        message: 'The server could not understand the request. Please check your query again.'
+    })
+    const truck = truckData.filter(t => t.truckId == id)
+    if (!truck.length) return res.status(404).json({
+        message: 'The truck with the provided ID does not exist'
+    })
     res.status(200).json({
         "Count of parcels": truck[0].loadedParcels.length
     })
 }
 
 const deleteTruck = (req, res, next) => {
-    const newTruckArr = truckData.Trucks.filter(t => t.truckId != req.params.truckId)
-    fs.writeFile('data/trucks.json', JSON.stringify(newTruckArr), 'utf8', err => {
-
-        // Checking for errors 
+    let id = req.params.truckId
+    if (!id || id != parseInt(id, 10)) return res.status(400).json({
+        message: 'The server could not understand the request. Please check your query again.'
+    })
+    const truck = truckData.filter(t => t.truckId == req.params.truckId)
+    if (!truck.length) return res.status(404).json({
+        message: 'The truck with the provided ID does not exist'
+    })
+    truckData.splice(truckData.indexOf(truck[0]), 1)
+    fs.writeFile('data/trucks.json', JSON.stringify(truckData), 'utf8', err => {
         if (err) throw err;
-
         console.log("Truck removed from the inventory")
     });
     res.status(200).json({
