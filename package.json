@@ -1,20 +1,25 @@
 {
-  "name": "parcelcompanyservice",
-  "version": "1.0.0",
-  "description": "A Node.js RESTful API service for a parcel company",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "node",
-    "restful",
-    "api"
-  ],
-  "author": "Yogita Bhatia",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "uuid": "^8.3.2"
-  }
+    "name": "parcelcompanyservice",
+    "version": "1.0.0",
+    "description": "A Node.js RESTful API service for a parcel company",
+    "main": "index.js",
+    "scripts": {
+        "test": "mocha"
+    },
+    "keywords": [
+        "node",
+        "restful",
+        "api"
+    ],
+    "author": "Yogita Bhatia",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "uuid": "^8.3.2"
+    },
+    "devDependencies": {
+        "chai": "^4.3.0",
+        "chai-http": "^4.3.0",
+        "mocha": "^8.3.0"
+    }
 }

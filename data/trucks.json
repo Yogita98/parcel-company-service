@@ -8,34 +8,27 @@
     {
         "truckId": 2,
         "companyName": "ABC",
-        "loaded": true,
+        "loaded": false,
         "weight": 0,
         "loadedParcels": []
     },
     {
         "truckId": 3,
         "companyName": "XYZ",
-        "loaded": true,
-        "weight": 16,
-        "loadedParcels": [{
-                "parcelId": 3
-            },
-            {
-                "parcelId": 4
-            }
-        ]
-    },
-    {
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    }, {
         "truckId": 4,
         "companyName": "PQR",
-        "loaded": true,
-        "weight": 18,
-        "loadedParcels": [{
-                "parcelId": 9
-            },
-            {
-                "parcelId": 10
-            }
-        ]
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    }, {
+        "truckId": 5,
+        "companyName": "HKR",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
     }
 ]

@@ -19,11 +19,14 @@ const getParcelDetails = (req, res, next) => {
         message: 'The parcel with the provided ID does not exist'
     })
     res.status(200).send({
-        parcelDetails: parcelDetails
+        parcel: parcelDetails[0]
     })
 }
 
 const createParcel = (req, res, next) => {
+    if (!req.body.category || !req.body.weight) return res.status(400).json({
+        message: 'category or weight should be defined'
+    })
     const newParcelId = parcelData.unloadedParcels[parcelData.unloadedParcels.length - 1].parcelId + 1
     const newParcel = {
         "parcelId": newParcelId,

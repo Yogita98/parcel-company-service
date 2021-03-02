@@ -17,6 +17,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-app.use('/parcels', parcelRoutes)
-app.use('/trucks', truckRoutes)
+app.use('/api/routes/parcels', parcelRoutes)
+app.use('/api/routes/trucks', truckRoutes)
 module.exports = app;
