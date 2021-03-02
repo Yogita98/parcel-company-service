@@ -2,8 +2,14 @@
         "truckId": 1,
         "companyName": "Volvo",
         "loaded": true,
-        "weight": 0,
-        "loadedParcels": []
+        "weight": 9,
+        "loadedParcels": [{
+                "parcelId": 1
+            },
+            {
+                "parcelId": 2
+            }
+        ]
     },
     {
         "truckId": 2,
@@ -18,13 +24,15 @@
         "loaded": false,
         "weight": 0,
         "loadedParcels": []
-    }, {
+    },
+    {
         "truckId": 4,
         "companyName": "PQR",
         "loaded": false,
         "weight": 0,
         "loadedParcels": []
-    }, {
+    },
+    {
         "truckId": 5,
         "companyName": "HKR",
         "loaded": false,

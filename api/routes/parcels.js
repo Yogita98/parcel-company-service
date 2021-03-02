@@ -9,6 +9,4 @@ router.get('/:parcelId', getParcelDetails)
 
 router.post('/create', createParcel)
 
-// router.delete('/:parcelId', deleteParcel)
-
 module.exports = router

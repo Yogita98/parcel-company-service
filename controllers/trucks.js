@@ -41,7 +41,7 @@ const getTruckDetails = (req, res, next) => {
 }
 
 const loadTruck = (req, res, next) => {
-    let count = req.query.parcelCount
+    let count = req.query.count
     if (!count || count != parseInt(count, 10)) return res.status(400).json({
         message: 'The server could not understand the request. Please check your query again.'
     })
