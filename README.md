@@ -3,8 +3,8 @@ An API service for a parcel company to manage its parcels and trucks
 ### Getting Started
 Clone this repository and install dependencies
 ```
-> git clone 
-> cd 
+> git clone https://github.com/Yogita98/parcel-company-service.git
+> cd parcel-company-service
 
 > npm install
 ```
@@ -18,3 +18,4 @@ Clone this repository and install dependencies
 ```
 > npm test
 ```
+The service is deployed and accessible on this URL: https://parcelserviceapi.herokuapp.com/
