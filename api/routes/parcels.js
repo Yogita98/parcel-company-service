@@ -1,12 +1,16 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const { getParcels, getParcelDetails, createParcel, deleteParcel } = require("../../controllers/parcels")
+const {
+  getParcels,
+  getParcelDetails,
+  createParcel,
+} = require("../../controllers/parcels");
 
-router.get('/', getParcels)
+router.get("/", getParcels);
 
-router.get('/:parcelId', getParcelDetails)
+router.get("/:parcelId", getParcelDetails);
 
-router.post('/create', createParcel)
+router.post("/create", createParcel);
 
-module.exports = router
+module.exports = router;

@@ -1,20 +1,28 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const { getTrucks, createTruck, getTruckDetails, loadTruck, getTruckWeight, getParcelCount, deleteTruck } = require('../../controllers/trucks')
+const {
+  getTrucks,
+  createTruck,
+  getTruckDetails,
+  loadTruck,
+  getTruckWeight,
+  getParcelCount,
+  deleteTruck,
+} = require("../../controllers/trucks");
 
-router.get('/', getTrucks)
+router.get("/", getTrucks);
 
-router.post('/create', createTruck)
+router.post("/create", createTruck);
 
-router.get('/:truckId', getTruckDetails)
+router.get("/:truckId", getTruckDetails);
 
-router.delete('/:truckId', deleteTruck)
+router.delete("/:truckId", deleteTruck);
 
-router.post('/load', loadTruck)
+router.post("/load", loadTruck);
 
-router.get('/weight/:truckId', getTruckWeight)
+router.get("/weight/:truckId", getTruckWeight);
 
-router.get('/parcelCount/:truckId', getParcelCount)
+router.get("/count/:truckId", getParcelCount);
 
-module.exports = router
+module.exports = router;

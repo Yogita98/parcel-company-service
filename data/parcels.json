@@ -1,5 +1,8 @@
 {
-    "loadedParcels": [{
+    "loadedParcels": [
+
+    ],
+    "unloadedParcels": [{
             "parcelId": 1,
             "category": "food",
             "parcelWeight": 5
@@ -8,9 +11,8 @@
             "parcelId": 2,
             "category": "clothing",
             "parcelWeight": 4
-        }
-    ],
-    "unloadedParcels": [{
+        },
+        {
             "parcelId": 3,
             "category": "crockery",
             "parcelWeight": 6
@@ -99,16 +101,6 @@
             "parcelId": 20,
             "category": "beverages",
             "parcelWeight": 12
-        },
-        {
-            "parcelId": 21,
-            "category": "lifestyle",
-            "parcelWeight": 3
-        },
-        {
-            "parcelId": 22,
-            "category": "lifestyle",
-            "parcelWeight": 3
         }
     ]
 }
