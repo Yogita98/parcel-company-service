@@ -8,7 +8,8 @@ const truckRoutes = require("./api/routes/trucks");
 // A middleware for the incoming requests.
 app.get("/", (req, res, next) => {
   res.status(200).json({
-    message: "It works",
+    message: "Welcome to the service",
+    status: "Working"
   });
 });
 
