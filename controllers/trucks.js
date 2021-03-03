@@ -44,6 +44,28 @@ const getTruckDetails = (req, res, next) => {
   res.status(200).json(truck);
 };
 
+const deleteTruck = (req, res, next) => {
+  let id = req.params.truckId;
+  if (!id || id != parseInt(id, 10))
+    return res.status(400).json({
+      message:
+        "The server could not understand the request. Please check your query again.",
+    });
+  const truck = truckData.filter((t) => t.truckId == req.params.truckId);
+  if (!truck.length)
+    return res.status(404).json({
+      message: "The truck with the provided ID does not exist",
+    });
+  truckData.splice(truckData.indexOf(truck[0]), 1);
+  fs.writeFile("data/trucks.json", JSON.stringify(truckData), "utf8", (err) => {
+    if (err) throw err;
+    console.log("Truck removed from the inventory");
+  });
+  res.status(200).json({
+    message: "Truck deleted",
+  });
+};
+
 const loadTruck = (req, res, next) => {
   let count = req.query.count;
   if (!count || count != parseInt(count, 10))
@@ -87,6 +109,28 @@ const loadTruck = (req, res, next) => {
   return res.status(201).json(truck);
 };
 
+const unloadTruck = (req, res, next) => {
+  let id = req.params.truckId;
+  if (!id || id != parseInt(id, 10))
+    return res.status(400).json({
+      message:
+        "The server could not understand the request. Please check your query again.",
+    });
+  const truck = truckData.filter((t) => t.truckId == id);
+  if (!truck.length)
+    return res.status(404).json({
+      message: "The truck with the provided ID does not exist",
+    });
+    const newTruck = {...truck[0], loaded: false, weight: 0, loadedParcels: []}
+    const truckIndex = truckData.indexOf(truck[0])
+    truckData[truckIndex] = newTruck
+    fs.writeFile("data/trucks.json", JSON.stringify(truckData), "utf8", (err) => {
+      if (err) throw err;
+      console.log("Done unloading the truck");
+    });
+    return res.status(200).json(newTruck)
+};
+
 const getTruckWeight = (req, res, next) => {
   let id = req.params.truckId;
   if (!id || id != parseInt(id, 10))
@@ -121,34 +165,15 @@ const getParcelCount = (req, res, next) => {
   });
 };
 
-const deleteTruck = (req, res, next) => {
-  let id = req.params.truckId;
-  if (!id || id != parseInt(id, 10))
-    return res.status(400).json({
-      message:
-        "The server could not understand the request. Please check your query again.",
-    });
-  const truck = truckData.filter((t) => t.truckId == req.params.truckId);
-  if (!truck.length)
-    return res.status(404).json({
-      message: "The truck with the provided ID does not exist",
-    });
-  truckData.splice(truckData.indexOf(truck[0]), 1);
-  fs.writeFile("data/trucks.json", JSON.stringify(truckData), "utf8", (err) => {
-    if (err) throw err;
-    console.log("Truck removed from the inventory");
-  });
-  res.status(200).json({
-    message: "Truck deleted",
-  });
-};
+
 
 module.exports = {
   getTrucks,
   createTruck,
   getTruckDetails,
-  loadTruck,
-  getTruckWeight,
-  getParcelCount,
   deleteTruck,
+  loadTruck,
+  unloadTruck,
+  getTruckWeight,
+  getParcelCount
 };

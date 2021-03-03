@@ -5,10 +5,11 @@ const {
   getTrucks,
   createTruck,
   getTruckDetails,
-  loadTruck,
-  getTruckWeight,
-  getParcelCount,
   deleteTruck,
+  loadTruck,
+  unloadTruck,
+  getTruckWeight,
+  getParcelCount
 } = require("../../controllers/trucks");
 
 router.get("/", getTrucks);
@@ -19,7 +20,9 @@ router.get("/:truckId", getTruckDetails);
 
 router.delete("/:truckId", deleteTruck);
 
-router.post("/load", loadTruck);
+router.put("/load", loadTruck);
+
+router.put("/unload/:truckId", unloadTruck);
 
 router.get("/weight/:truckId", getTruckWeight);
 

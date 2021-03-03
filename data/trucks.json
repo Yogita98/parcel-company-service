@@ -1,36 +1,36 @@
-{
-    "Trucks": [{
-            "truckId": 1,
-            "companyName": "Volvo",
-            "loaded": true,
-            "weight": 0,
-            "loadedParcels": []
-        },
-        {
-            "truckId": 2,
-            "companyName": "ABC",
-            "loaded": false,
-            "weight": 0,
-            "loadedParcels": []
-        },
-        {
-            "truckId": 3,
-            "companyName": "XYZ",
-            "loaded": false,
-            "weight": 0,
-            "loadedParcels": []
-        }, {
-            "truckId": 4,
-            "companyName": "PQR",
-            "loaded": false,
-            "weight": 0,
-            "loadedParcels": []
-        }, {
-            "truckId": 5,
-            "companyName": "HKR",
-            "loaded": false,
-            "weight": 0,
-            "loadedParcels": []
-        }
-    ]
-}
+[{
+        "truckId": 1,
+        "companyName": "Volvo",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    },
+    {
+        "truckId": 2,
+        "companyName": "ABC",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    },
+    {
+        "truckId": 3,
+        "companyName": "XYZ",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    },
+    {
+        "truckId": 4,
+        "companyName": "PQR",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    },
+    {
+        "truckId": 5,
+        "companyName": "HKR",
+        "loaded": false,
+        "weight": 0,
+        "loadedParcels": []
+    }
+]
