@@ -6,6 +6,9 @@ const chaiHttp = require("chai-http");
 chai.should();
 chai.use(chaiHttp);
 
+/**
+ * Test the GET route
+ */
 describe("Parcel APIs", () => {
   describe("Test GET route /api/routes/parcels", () => {
     it("It should return all the parcels", (done) => {

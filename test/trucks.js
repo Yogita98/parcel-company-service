@@ -6,6 +6,9 @@ const chaiHttp = require("chai-http");
 chai.should();
 chai.use(chaiHttp);
 
+/**
+ * Test the GET (by id) route
+ */
 describe("Truck APIs", () => {
   describe("Test GET route /api/routes/trucks", () => {
     it("It should return all the trucks", (done) => {
