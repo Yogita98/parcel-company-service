@@ -2,9 +2,10 @@
     "name": "parcelcompanyservice",
     "version": "1.0.0",
     "description": "A Node.js RESTful API service for a parcel company",
-    "main": "index.js",
+    "main": "server.js",
     "scripts": {
-        "test": "mocha"
+        "test": "mocha",
+        "start": "node server.js"
     },
     "keywords": [
         "node",
@@ -14,8 +15,7 @@
     "author": "Yogita Bhatia",
     "license": "ISC",
     "dependencies": {
-        "body-parser": "^1.19.0",
-        "uuid": "^8.3.2"
+        "body-parser": "^1.19.0"
     },
     "devDependencies": {
         "chai": "^4.3.0",
